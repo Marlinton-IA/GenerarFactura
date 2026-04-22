@@ -1,26 +1,20 @@
 # GenerarFactura
 
-Generador automático de facturas en PDF con interfaz gráfica y registro en Excel.
+Generador automático de facturas en PDF con interfaz gráfica y soporte para múltiples items.
 
 ## Descripción
 
-Este proyecto permite generar facturas en formato PDF de manera automática con una interfaz gráfica amigable. Las facturas incluyen:
-- Numeración consecutiva automática
-- Datos del cliente (nombre y documento)
-- Descripción de productos/servicios
-- Cantidad y valores
-- Cálculo automático de totales
-- Registro permanente en archivo Excel
-- Interfaz gráfica con Tkinter
+Aplicación profesional para generar facturas en formato PDF con una interfaz visual intuitiva. Permite agregar múltiples items por factura (servicios, repuestos, licencias, etc.) con cálculo automático de totales.
 
 ## Características
 
-✨ **Interfaz visual intuitiva** con Tkinter
-✓ **Validación de datos** en tiempo real
-📊 **Cálculo automático** de subtotales
+✨ **Interfaz visual moderna** con Tkinter
+✓ **Múltiples items por factura** - Agregue servicios, repuestos, licencias, etc.
+✓ **Cálculo automático** - Subtotal y total en tiempo real
 🔢 **Numeración consecutiva** de facturas
 💾 **Base de datos en Excel** con todos los registros
-📄 **Generación de PDF** profesionales
+📄 **PDF profesionales** con formato de empresa
+🗑 **Gestión de items** - Agregar, eliminar y modificar items
 
 ## Requisitos
 
@@ -47,24 +41,69 @@ Ejecutar la aplicación:
 python generar_factura.py
 ```
 
-### Interfaz Gráfica
+### Instrucciones de uso
 
-1. **Ingrese los datos:**
+1. **Ingrese datos del cliente:**
    - Cliente: Nombre del cliente
    - Documento: Número de identificación
-   - Descripción: Descripción del producto o servicio
+
+2. **Agregue items:**
+   - Descripción: Descripción del servicio/producto (ej: "Mantenimiento", "Repuesto XYZ", "Licencia Software")
    - Cantidad: Cantidad de unidades
-   - Valor Unitario: Precio unitario
+   - Valor: Precio unitario
+   - Click en "+ Agregar Item"
 
-2. **Botones disponibles:**
-   - **Generar Factura**: Crea el PDF y guarda los datos en Excel
-   - **Limpiar**: Borra todos los campos
-   - **Ver Facturas**: Abre el archivo Excel con todos los registros
+3. **Gestione items:**
+   - Vea todos los items en la tabla
+   - Seleccione un item y use "🗑 Eliminar Item" para borrarlo
+   - Use "🗑 Limpiar Todo" para borrar todos los items
 
-3. **Información en tiempo real:**
-   - Cantidad total ingresada
-   - Subtotal calculado
-   - Próximo número de factura
+4. **Genere la factura:**
+   - Verifique que tenga al menos un item
+   - Click en "✓ Generar Factura"
+   - Se creará el PDF y se guardarán los datos en Excel
+
+5. **Botones disponibles:**
+   - **+ Agregar Item**: Agrega un item a la factura
+   - **🗑 Eliminar Item**: Elimina el item seleccionado
+   - **✓ Generar Factura**: Crea el PDF y guarda en Excel
+   - **🗑 Limpiar Todo**: Borra todos los campos
+   - **📊 Ver Facturas**: Abre el archivo Excel con registros
+
+### Panel de información
+
+El panel "Resumen" muestra en tiempo real:
+- Cantidad de items en la factura
+- Total general de la factura
+- Próximo número de consecutivo
+
+## Ejemplos de uso
+
+### Ejemplo 1: Factura con servicios múltiples
+```
+Cliente: Empresa ABC
+Documento: 123456789
+
+Items:
+- Mantenimiento preventivo (Cant: 1, Val: $500.000)
+- Reparación de equipo (Cant: 1, Val: $250.000)
+- Licencia Software (Cant: 2, Val: $100.000 c/u)
+
+Total: $950.000
+```
+
+### Ejemplo 2: Factura con repuestos
+```
+Cliente: Tienda XYZ
+Documento: 987654321
+
+Items:
+- Tóner Negro (Cant: 5, Val: $45.000)
+- Cartuchos Color (Cant: 3, Val: $55.000)
+- Papel Bond (Cant: 10 resmas, Val: $25.000)
+
+Total: $520.000
+```
 
 ## Archivos
 
@@ -73,14 +112,35 @@ python generar_factura.py
 - `facturas.xlsx` - Base de datos de facturas (se crea automáticamente)
 - `Factura_FV-XXXX.pdf` - Facturas generadas
 
+## Estructura de datos
+
+### Archivo Excel (facturas.xlsx)
+Columnas:
+- `consecutivo`: Número de factura (FV-XXXX)
+- `fecha`: Fecha de generación
+- `cliente`: Nombre del cliente
+- `documento`: Documento del cliente
+- `items`: Descripción de todos los items
+- `total`: Total general de la factura
+
+### PDF generado
+Incluye:
+- Encabezado de la empresa
+- Número y fecha de factura
+- Datos del cliente
+- Tabla con todos los items (descripción, cantidad, valor unitario, subtotal)
+- Total general
+
 ## Notas
 
 - Los archivos PDF y XLSX generados se excluyen del repositorio (`.gitignore`)
-- La numeración de facturas es consecutiva y se almacena en Excel
+- La numeración de facturas es consecutiva y automática
 - Diseñado para VALSEBSA S.A.S (Yumbo, Valle del Cauca)
-- La interfaz es responsiva y fácil de usar
+- Soporta múltiples idiomas y caracteres especiales
+- Permite agregar, eliminar y modificar items antes de generar
 
 ## Versión
 
+- **v3.0** - Soporte para múltiples items por factura
 - **v2.0** - Interfaz gráfica con Tkinter
 - **v1.0** - Versión línea de comandos
