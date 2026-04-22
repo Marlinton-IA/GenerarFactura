@@ -10,6 +10,7 @@ from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Paragraph, 
 from reportlab.lib import colors
 from reportlab.lib.pagesizes import letter
 from reportlab.lib.styles import getSampleStyleSheet
+from reportlab.lib.enums import TA_CENTER, TA_RIGHT
 import datetime
 import os
 
@@ -436,7 +437,8 @@ class GeneradorFacturasApp:
                 ("GRID", (0, 0), (-1, -1), 1, colors.black),
                 ("BACKGROUND", (0, 0), (-1, 0), colors.lightgrey),
                 ("BACKGROUND", (0, -1), (-1, -1), colors.lightgrey),
-                ("ALIGN", (1, 0), (-1, -1), "right"),
+                ("ALIGN", (1, 0), (-1, -1), TA_RIGHT),
+                ("ALIGN", (0, 0), (0, -1), TA_CENTER),
                 ("FONTNAME", (0, -1), (-1, -1), "Helvetica-Bold"),
             ]))
             
